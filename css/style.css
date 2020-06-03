@@ -4,11 +4,14 @@ html {
 
 *, *::before, *::after {
    box-sizing: inherit;
+   background-color: #685044;
 }
 .container {
    max-width: 1200px;
    margin: 0 auto;  
 }
+
+/* ********** title ********** */
 
 .title {
    display: flex;
@@ -23,12 +26,33 @@ h1 {
    font-size: 50px;
 }
 
+/* ********** menu ********** */
+
+.menu {
+   display: flex;
+   width: 100%;
+   height: 58px;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid red;
+}
+
+/* ********** main ********** */ 
+
 .box {
    width: 100px;
    height: 100px;
-   border: 1px solid blue;
+   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.75) inset;
    margin: 10px;
    border-radius: 10px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
+
+.box:hover {
+   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.75);
 }
 
 #boxes {
@@ -38,14 +62,14 @@ h1 {
 }
 
 .bgYellow {
-   background-color: yellow;
+   background-color: #B26E63;
 }
 .bgTomato {
-   background-color: tomato;
+   background-color: #9A8C98;
 }
 .bgOlive {
-   background-color: olive;
+   background-color: #EE8434;
 }
 .bgBlue {
-   background-color: lightskyblue;
+   background-color: #C9ADA7;
 }
