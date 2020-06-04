@@ -5,6 +5,7 @@ html {
 *, *::before, *::after {
    box-sizing: inherit;
    background-color: #685044;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .container {
    max-width: 1200px;
@@ -19,11 +20,12 @@ html {
    height: 58px;
    justify-content: center;
    align-items: center;
-   border: 1px solid red;
 }
 
 h1 {
    font-size: 50px;
+   color: #EE8434;
+   text-shadow: 3px 3px 3px #9B4329;
 }
 
 /* ********** menu ********** */
@@ -31,18 +33,38 @@ h1 {
 .menu {
    display: flex;
    width: 100%;
-   height: 58px;
-   justify-content: center;
+   height: 80px;
+   justify-content: space-around;
    align-items: center;
-   border: 1px solid red;
+   border-bottom: 3px solid #000;
+   margin-bottom: 20px;
 }
+
+.button {
+   background-color: #EE8434;
+   border: none;
+   border-radius: 10px;
+   color: #000;
+   padding: 16px 32px;
+   text-align: center;
+   font-size: 16px;
+   opacity: 0.75;
+   transition: 0.7s;
+   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.9) inset;
+}
+ 
+.button:hover {
+   opacity: 1;
+   
+}
+ 
 
 /* ********** main ********** */ 
 
 .box {
    width: 100px;
    height: 100px;
-   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.75) inset;
+   box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.9) inset;
    margin: 10px;
    border-radius: 10px;
    display: flex;
@@ -61,15 +83,15 @@ h1 {
    justify-content: center;
 }
 
-.bgYellow {
+.bgFizz {
    background-color: #B26E63;
 }
-.bgTomato {
+.bgBuzz {
    background-color: #9A8C98;
 }
-.bgOlive {
+.bgFizzBuzz {
    background-color: #EE8434;
 }
-.bgBlue {
+.bgOther {
    background-color: #C9ADA7;
 }

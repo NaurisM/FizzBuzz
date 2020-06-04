@@ -19,9 +19,16 @@
          </div>
          <div class="container">
             <div class="menu">
-               <button class="btn-add-many" id="btn-id-add-many">Add Boxes</button>
-               <button class="btn-clear" id="btn-id-clear">Clear All</button>
-               <input type="number" name="" id="max-count" min="0" max="100" value="0" />
+               <div class="btn">
+                  <button class="btn-add-many button" id="btn-id-add-many">Add Boxes</button>
+               </div>
+               <div class="btn">
+                  <button class="btn-clear button" id="btn-id-clear">Clear All</button>
+               </div>
+               <div class="input">
+                  <label for="quantity">Quantity (between 1 and 100):</label>
+                  <input type="number" name="quantity" id="quantity" min="0" max="100" value="0" />
+               </div>
             </div>
          </div>
          <div id="boxes" class="container"></div>

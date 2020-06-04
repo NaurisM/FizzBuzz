@@ -1,52 +1,66 @@
-function main() {
-   console.log('scripts start running')
-   const app = document.getElementById("boxes");
+console.log("Started Clearing js");
+//globals
+const innerCont = document.getElementById("boxes");
+const maxCountEl = document.getElementById("quantity");
+let maxCount = 0;
+const MAX = 100;
+const MIN = 0;
 
-   for (let i = 1; i <= 100; i++) {
-      let myClassList = ['box'];
+function addElement(parent, tag, id, classList, content) {
+   const newEl = document.createElement(tag);
+   if (id !== null) newEl.id = id;
+   newEl.classList.add(...classList);
+   newEl.innerText = content;
+   parent.appendChild(newEl);
+}
+
+function addManyElements() {
+   for (let i = 1; i <= maxCount; i++) {
+      const id = "boxId_" + i;
+      const classList = ["box"];
+
       if (i % 5 == 0 && i % 3 == 0) {
-         myClassList.push('bgOlive');
+         classList.push('bgFizzBuzz');
       } else if (i % 5 == 0) {
-         myClassList.push('bgTomato');
+         classList.push('bgBuzz');
       } else if (i % 3 == 0) {
-         myClassList.push('bgYellow');
+         classList.push('bgFizz');
       } else {
-         myClassList.push('bgBlue');
+         classList.push('bgOther');
       }
-      addNewElement(
-         app,
-         "div",
-         "BoxId_" + i, //remember id have to be unique
-         myClassList,
-         i
-      );
-   }
-
-   function addNewElement(parent, tag, id = "", myClassList = [], text = "") {
-      const newEl = document.createElement(tag);
-      if (id !== "") {
-         newEl.id = id;
-      }
-
-      if (myClassList.length > 0) {
-         newEl.classList.add(...myClassList);
-      }
-
-      if (text !== "") {
-         console.log("Adding", text);
-         newEl.innerText = text;
-      }
-      parent.appendChild(newEl);
-   }
-
-   function styleEl(myElement, height, width, bgColor, text = "") {
-      myElement.style.height = height;
-      myElement.style.width = width;
-      myElement.style.backgroundColor = bgColor;
-      if (text !== "") {
-         myElement.innerText = text;
-      }
+      addElement(innerCont, "div", id, classList, i);
    }
 }
 
-main();
+function deleteElements() {
+   console.log("Clearing Elements");
+   while (innerCont.firstChild) {
+      innerCont.removeChild(innerCont.firstChild);
+   }
+}
+
+function onMaxChange() {
+   console.log("New value might be", maxCountEl.value);
+   //IMPORTANT need to convert to Number instead of String
+   const tvalue = parseInt(maxCountEl.value);
+   //sanity check
+   if (tvalue > MAX || tvalue < MIN) return;
+
+   maxCount = tvalue;
+   console.log("Actually maxcount is", maxCount);
+   console.log(maxCount, typeof maxCount);
+}
+
+function addEventHandlers() {
+   const addManyBtn = document.getElementById("btn-id-add-many");
+   addManyBtn.onclick = addManyElements;
+
+   document.getElementById("btn-id-clear").onclick = deleteElements;
+   maxCountEl.onchange = onMaxChange;
+   /*
+     maxCountEl.oninput = (ev) =>
+     console.log("Fires while changing", ev.target.value);
+   */
+}
+
+addEventHandlers();
