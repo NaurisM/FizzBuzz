@@ -18,17 +18,21 @@ function addManyElements() {
    for (let i = 1; i <= maxCount; i++) {
       const id = "boxId_" + i;
       const classList = ["box"];
+      let text = '';
 
       if (i % 5 == 0 && i % 3 == 0) {
          classList.push('bgFizzBuzz');
+         text = ' Fizz Buzz';
       } else if (i % 5 == 0) {
          classList.push('bgBuzz');
+         text = ' Buzz';
       } else if (i % 3 == 0) {
          classList.push('bgFizz');
+         text = ' Fizz';
       } else {
          classList.push('bgOther');
       }
-      addElement(innerCont, "div", id, classList, i);
+      addElement(innerCont, "div", id, classList, i + text);
    }
 }
 
