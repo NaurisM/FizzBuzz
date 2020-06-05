@@ -1,5 +1,5 @@
-console.log("Started Clearing js");
-//globals
+console.log("Started script");
+
 const innerCont = document.getElementById("boxes");
 const maxCountEl = document.getElementById("quantity");
 let maxCount = 0;
@@ -15,7 +15,7 @@ function addElement(parent, tag, id, classList, content) {
    parent.appendChild(newEl);
 }
 
-function addManyElements() {
+function addElements() {
    for (let i = 0; i < maxCount; i++) {
       lastBoxId++;
       const id = "boxId_" + lastBoxId;
@@ -48,9 +48,7 @@ function deleteElements() {
 
 function onMaxChange() {
    console.log("New value might be", maxCountEl.value);
-   //IMPORTANT need to convert to Number instead of String
    const tvalue = parseInt(maxCountEl.value);
-   //sanity check
    if (tvalue > MAX || tvalue < MIN) return;
 
    maxCount = tvalue;
@@ -60,14 +58,10 @@ function onMaxChange() {
 
 function addEventHandlers() {
    const addManyBtn = document.getElementById("btn-id-add-many");
-   addManyBtn.onclick = addManyElements;
+   addManyBtn.onclick = addElements;
 
    document.getElementById("btn-id-clear").onclick = deleteElements;
    maxCountEl.onchange = onMaxChange;
-   /*
-     maxCountEl.oninput = (ev) =>
-     console.log("Fires while changing", ev.target.value);
-   */
 }
 
 addEventHandlers();
