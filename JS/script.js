@@ -5,6 +5,7 @@ const maxCountEl = document.getElementById("quantity");
 let maxCount = 0;
 const MAX = 100;
 const MIN = 0;
+let lastBoxId = 0;
 
 function addElement(parent, tag, id, classList, content) {
    const newEl = document.createElement(tag);
@@ -15,29 +16,31 @@ function addElement(parent, tag, id, classList, content) {
 }
 
 function addManyElements() {
-   for (let i = 1; i <= maxCount; i++) {
-      const id = "boxId_" + i;
+   for (let i = 0; i < maxCount; i++) {
+      lastBoxId++;
+      const id = "boxId_" + lastBoxId;
       const classList = ["box"];
       let text = '';
 
-      if (i % 5 == 0 && i % 3 == 0) {
+      if (lastBoxId % 5 == 0 && lastBoxId % 3 == 0) {
          classList.push('bgFizzBuzz');
          text = ' Fizz Buzz';
-      } else if (i % 5 == 0) {
+      } else if (lastBoxId % 5 == 0) {
          classList.push('bgBuzz');
          text = ' Buzz';
-      } else if (i % 3 == 0) {
+      } else if (lastBoxId % 3 == 0) {
          classList.push('bgFizz');
          text = ' Fizz';
       } else {
          classList.push('bgOther');
       }
-      addElement(innerCont, "div", id, classList, i + text);
+      addElement(innerCont, "div", id, classList, lastBoxId + text);
    }
 }
 
 function deleteElements() {
    console.log("Clearing Elements");
+   lastBoxId = 0;
    while (innerCont.firstChild) {
       innerCont.removeChild(innerCont.firstChild);
    }
