@@ -1,11 +1,15 @@
-console.log("Started script");
+console.log("Start script");
 
 const innerCont = document.getElementById("boxes");
 const maxCountEl = document.getElementById("quantity");
-let maxCount = 0;
+const changeFizz = document.getElementById("fValue");
+const changeBuzz = document.getElementById("bValue");
 const MAX = 100;
-const MIN = 0;
+const MIN = 1;
+let maxCount = 1;
 let lastBoxId = 0;
+let fizzValue = 3;
+let buzzValue = 5;
 
 function addElement(parent, tag, id, classList, content) {
    const newEl = document.createElement(tag);
@@ -22,13 +26,13 @@ function addElements() {
       const classList = ["box"];
       let text = '';
 
-      if (lastBoxId % 5 == 0 && lastBoxId % 3 == 0) {
+      if (lastBoxId % buzzValue == 0 && lastBoxId % fizzValue == 0) {
          classList.push('bgFizzBuzz');
          text = ' Fizz Buzz';
-      } else if (lastBoxId % 5 == 0) {
+      } else if (lastBoxId % buzzValue == 0) {
          classList.push('bgBuzz');
          text = ' Buzz';
-      } else if (lastBoxId % 3 == 0) {
+      } else if (lastBoxId % fizzValue == 0) {
          classList.push('bgFizz');
          text = ' Fizz';
       } else {
@@ -50,18 +54,25 @@ function onMaxChange() {
    console.log("New value might be", maxCountEl.value);
    const tvalue = parseInt(maxCountEl.value);
    if (tvalue > MAX || tvalue < MIN) return;
-
    maxCount = tvalue;
-   console.log("Actually maxcount is", maxCount);
-   console.log(maxCount, typeof maxCount);
+}
+
+function onFizzBuzzChange() {
+   console.log("Fizz is", changeFizz.value);
+   console.log("Buzz is", changeBuzz.value);
+   const fval = parseInt(changeFizz.value);
+   fizzValue = fval;
+   const bval = parseInt(changeBuzz.value);
+   buzzValue = bval;
 }
 
 function addEventHandlers() {
-   const addManyBtn = document.getElementById("btn-id-add-many");
+   const addManyBtn = document.getElementById("btnAdd");
    addManyBtn.onclick = addElements;
-
-   document.getElementById("btn-id-clear").onclick = deleteElements;
+   document.getElementById("btnClear").onclick = deleteElements;
    maxCountEl.onchange = onMaxChange;
+   changeFizz.onchange = onFizzBuzzChange;
+   changeBuzz.onchange = onFizzBuzzChange;
 }
 
 addEventHandlers();
