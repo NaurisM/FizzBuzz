@@ -58,6 +58,7 @@ function onMaxChange() {
 }
 
 function onFizzBuzzChange() {
+   deleteElements();
    console.log("Fizz is", changeFizz.value);
    console.log("Buzz is", changeBuzz.value);
    const fval = parseInt(changeFizz.value);
